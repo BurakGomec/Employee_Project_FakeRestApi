@@ -1,0 +1,34 @@
+{
+  "employees": [
+    {
+      "name": "Burak Gömeç",
+      "department": "SD",
+      "salary": 6000,
+      "id": 1
+    },
+    {
+      "name": "BURAK",
+      "department": "IT",
+      "salary": 30000,
+      "id": 2
+    },
+    {
+      "name": "BURAK",
+      "department": "YBS",
+      "salary": 2000,
+      "id": 3
+    },
+    {
+      "name": "BURAK",
+      "department": "CS",
+      "salary": 5555,
+      "id": 4
+    },
+    {
+      "name": "BURAK",
+      "department": "CS",
+      "salary": 5699,
+      "id": 5
+    }
+  ]
+}
