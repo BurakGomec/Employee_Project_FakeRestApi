@@ -31,10 +31,10 @@ export class Request {
               "Content-type": "application/json; charset=UTF-8"
             }
           })
-          .then(response => response.json())
-          .then(json => console.log(json));
-          //const responseData = await response.json();
-         //return responseData;
+        //  .then(response => response.json())
+          //.then(json => console.log(json));
+        const responseData = await response.json();
+        return responseData;
     }
     async delete(id){
         
