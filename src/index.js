@@ -1,5 +1,6 @@
 import{Request} from "./request";
 import{UI} from "./ui";
+import employeejson from "../fake-api/employee.json";
 
 const add = document.getElementById("add");
 const form = document.getElementById("employee-form");
@@ -21,36 +22,45 @@ let updateState=null;
 function eventListeners(){
     
     document.addEventListener("DOMContentLoaded",getAllEmployees);
-    //document.addEventListener("submit",addNewEmployee);
     employeesList.addEventListener("click",UpdateOrDelete);
     updateEmployeeButton.addEventListener("click",updateEmployee);
-    //filter.addEventListener("onchange",filterMethod);
+    filter.addEventListener("input",filterMethod);
     clearall.addEventListener("click",clearAllEmployees);
     add.addEventListener("click",addNewEmployee);
-    document.getElementById("filter").onchange = function(){
-        console.log(filter.textContent);
-     };
  
 }
 
-function clearAllEmployees(){
+function clearAllEmployees(e){
     let count = employeesList.childNodes.length;
-    console.log(count);
-    for(let i=0;i<=count;i++){
-        request.delete(i).
-        then(message =>{
-
-            console.log(message)
-
-        } )
-        .catch(error => console.log(error));
+    for(let i=0;i<count;i++){
+        request.delete(Number(employeesList.childNodes[i].children[3].textContent));
     }
-    getAllEmployees();
+
+    for(let i=0;i<count;i++){
+        employeesList.firstChild.remove();
+    }
+     e.preventDefault();
+
 }
 
+
 function filterMethod(){
-    console.log("deneme");
-    console.log(filter.textContent);
+    let count = employeesList.childNodes.length;
+
+    const lower=filter.value.toLowerCase();
+    console.log(lower);
+
+
+    for(let i=0;i<count;i++){
+        if(lower == employeejson.employees[i].name.toLowerCase() || lower == employeejson.employees[i].department.toLowerCase() 
+            ||lower == employeejson.employees[i].salary){
+                console.log("Bulundu");
+
+                
+            }
+    }
+    
+
 }
 
 
@@ -69,8 +79,7 @@ else{
         salary:Number(salary)};
     
         request.post(data).then(employee =>{
-            getAllEmployees();
-            //ui.addNewEmployeeUI(employee);
+            ui.addNewEmployeeUI(employee);
         })
         .catch(err => console.log(err));
         
@@ -106,10 +115,12 @@ function UpdateOrDelete(e){
 function deleteEmployee(employeeTarget){
     const id = employeeTarget.parentElement.previousElementSibling.previousElementSibling.textContent;
     request.delete(id)
-    .then(getAllEmployees()
-    )
+    .then(
+        ui.deleteEmployeeFromUI(employeeTarget.parentElement.parentElement)
+        
+        )
     .catch(err => console.log(err));
-   // ui.deleteEmployeeUI(employeeTarget.parentElement.parentElement);
+
 }
 
 function updateEmployeeController(employeeTarget){
@@ -128,6 +139,9 @@ function updateEmployeeController(employeeTarget){
 }
 
 function updateEmployee(){
+    nameInput.style.backgroundColor="#FFFFFF";
+    departmentInput.style.backgroundColor="#FFFFFF";
+    salaryInput.style.backgroundColor="#FFFFFF";
     if(updateState){
         const data={name:nameInput.value.trim(),department:departmentInput.value.trim(),
         salary:salaryInput.value.trim()};
@@ -140,21 +154,7 @@ function updateEmployee(){
         .catch(err => console.log(err));
    
     }
-    // const deneme = document.getElementById("update-employee");
-    // deneme.style.display="block";
-
-}
-
-function AllUpdateEmployee(e){
-    const namee = nameInput.value.trim();
-    const departmentt= departmentInput.value.trim();
-    const salaryy = salaryInput.value.trim();
-
-    const data= {name:namee,
-    department:departmentt,
-    salary:Number(salaryy)};
-
-    
+    updateEmployeeButton.style.display="none";
 
 }
 

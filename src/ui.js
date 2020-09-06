@@ -32,13 +32,16 @@ export class UI{
     }
  
   addNewEmployeeUI(employee){
-    this.employeelist.innerHTML += `<tr>                                  
-    <td>${employee.name}</td>
-    <td>${employee.department}</td>
-    <td>${employee.salary}</td>
-    <td>${employee.id}</td>
-    <td><a href="#" id = "update-employee" class= "btn btn-danger">Güncelle</a></td> 
-    <td> <a href="#" id = "delete-employee" class= "btn btn-danger">Sil</a></td></tr>`;
+    
+      this.employeelist.innerHTML += `<tr>                                  
+      <td>${employee.name}</td>
+      <td>${employee.department}</td>
+      <td>${employee.salary}</td>
+      <td>${employee.id}</td>
+      <td><a href="#" id = "update-employee" class= "btn btn-danger">Güncelle</a></td> 
+      <td> <a href="#" id = "delete-employee" class= "btn btn-danger">Sil</a></td></tr>`;
+    
+
 
   }
 
@@ -66,6 +69,9 @@ export class UI{
           this.employeelist.children[element].children[i].style.backgroundColor="rgb(33, 37, 41)";
         }
     }
+  }
+  deleteEmployeeFromUI(element) {
+    element.remove();
   }
 
   addEmployeeInfoInputs(target){

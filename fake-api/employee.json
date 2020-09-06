@@ -4,43 +4,13 @@
       "name": "BURAK",
       "department": "IT",
       "salary": 2000,
-      "id": 8
+      "id": 1
     },
     {
       "name": "BURAK",
-      "department": "IT",
+      "department": "CS",
       "salary": 2000,
-      "id": 9
-    },
-    {
-      "name": "BURAK",
-      "department": "IT",
-      "salary": 2000,
-      "id": 10
-    },
-    {
-      "name": "BURAK",
-      "department": "IT",
-      "salary": 2000,
-      "id": 11
-    },
-    {
-      "name": "BURAK",
-      "department": "IT",
-      "salary": 2000,
-      "id": 12
-    },
-    {
-      "name": "BURAK",
-      "department": "IT",
-      "salary": 2000,
-      "id": 13
-    },
-    {
-      "name": "Burak Gömeç",
-      "department": "IT",
-      "salary": 2000,
-      "id": 14
+      "id": 2
     }
   ]
 }
