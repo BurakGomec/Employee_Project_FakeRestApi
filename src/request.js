@@ -26,7 +26,11 @@ export class Request {
         //Varolan bir veriyi günceller
         const response=await fetch(this.url+"/"+id,{
             method: 'PUT',
-            body: JSON.stringify(data),
+            body: JSON.stringify({
+              name:data.name,
+              department:data.department,
+              salary:data.salary,
+              id:id+1,}),
             headers: {
               "Content-type": "application/json; charset=UTF-8"
             }
@@ -36,8 +40,7 @@ export class Request {
         const responseData = await response.json();
         return responseData;
     }
-    async delete(id){
-        
+    async delete(id){ 
         const response=await fetch(this.url+"/"+id,{method: 'DELETE'});
          const responseData = await response.json();
          return id+" . veri basariyla silindi";

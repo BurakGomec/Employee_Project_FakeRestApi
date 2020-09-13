@@ -5,12 +5,18 @@
   "main": "./src/index.js",
   "scripts": {
     "test": "This is a test",
+    "rest": "json-server --watch ./fake-api/employee.json",
     "start": "webpack-dev-server --output-public-path=/bundles/  --mode development --open --hot",
     "build": "webpack --progress"
+
   },
   "keywords": [
     "employee",
-    "project"
+    "project",
+    "es6",
+    "fetch",
+    "dom input",
+    "fake-rest-api"
   ],
   "author": "Burak Gömeç",
   "license": "ISC",

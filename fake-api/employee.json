@@ -2,15 +2,33 @@
   "employees": [
     {
       "name": "BURAK",
-      "department": "IT",
+      "department": "CS",
       "salary": 2000,
       "id": 1
     },
     {
-      "name": "BURAK",
-      "department": "CS",
-      "salary": 2000,
+      "name": "Can",
+      "department": "Cod",
+      "salary": 5000,
       "id": 2
+    },
+    {
+      "name": "Burak",
+      "department": "Dev",
+      "salary": 10000,
+      "id": 3
+    },
+    {
+      "name": "Cem",
+      "department": "Flac",
+      "salary": 7000,
+      "id": 4
+    },
+    {
+      "name": "Mert",
+      "department": ".NET",
+      "salary": 5000,
+      "id": 5
     }
   ]
 }

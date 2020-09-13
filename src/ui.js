@@ -24,6 +24,30 @@ export class UI{
       this.employeelist.innerHTML = result;
     }
 
+    filterEmployeeUI(array){
+      let employeecount = this.employeelist.childElementCount;
+      let arraycount= array.length;
+      let counter=0;
+      const list= [];
+      for(let x=0;x<arraycount;x++){
+        for(let i=0;i<employeecount;i++){
+          if(array[x] != i){
+            this.employeelist.childNodes[i].style.display="none";
+          }
+          else{
+            counter++;
+            list.push(array[x]);
+          }
+        }
+      }
+      if(counter>=2){
+        for(let i=0;i<list.length;i++){
+          let x=list[i];      
+          this.employeelist.childNodes[x].style.display="table-row";
+        }   
+      }
+    }
+
 
   clearAllInputs(){
     this.nameInput.value = "";
@@ -40,9 +64,6 @@ export class UI{
       <td>${employee.id}</td>
       <td><a href="#" id = "update-employee" class= "btn btn-danger">Güncelle</a></td> 
       <td> <a href="#" id = "delete-employee" class= "btn btn-danger">Sil</a></td></tr>`;
-    
-
-
   }
 
   toogleUpdateButton(target,id){
@@ -90,10 +111,7 @@ export class UI{
     <td><a href="#" id = "update-employee" class= "btn btn-danger">Güncelle</a></td> 
     <td> <a href="#" id = "delete-employee" class= "btn btn-danger">Sil</a></td></tr>
     `
-
     this.clearAllInputs();
-
-
   }
 
 

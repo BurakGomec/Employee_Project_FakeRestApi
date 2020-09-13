@@ -27,6 +27,8 @@ function eventListeners(){
     filter.addEventListener("input",filterMethod);
     clearall.addEventListener("click",clearAllEmployees);
     add.addEventListener("click",addNewEmployee);
+    document.addEventListener("submit",addNewEmployee);
+
  
 }
 
@@ -39,6 +41,7 @@ function clearAllEmployees(e){
     for(let i=0;i<count;i++){
         employeesList.firstChild.remove();
     }
+
      e.preventDefault();
 
 }
@@ -46,21 +49,22 @@ function clearAllEmployees(e){
 
 function filterMethod(){
     let count = employeesList.childNodes.length;
-
     const lower=filter.value.toLowerCase();
-    console.log(lower);
+    const  array = [];
 
 
-    for(let i=0;i<count;i++){
-        if(lower == employeejson.employees[i].name.toLowerCase() || lower == employeejson.employees[i].department.toLowerCase() 
-            ||lower == employeejson.employees[i].salary){
-                console.log("Bulundu");
-
-                
-            }
-    }
-    
-
+        for(let i=0;i<count;i++){
+            if(lower == employeesList.childNodes[i].children[0].textContent.toLowerCase() || lower == employeesList.childNodes[i].children[1].textContent.toLowerCase()
+                || lower ==employeesList.childNodes[i].children[2].textContent){
+                    array.push(i); 
+                }
+                else{
+                    employeesList.childNodes[i].style.display="table-row";
+                }
+        }
+        if(array.length>0){
+            ui.filterEmployeeUI(array);
+        }
 }
 
 
@@ -82,11 +86,9 @@ else{
             ui.addNewEmployeeUI(employee);
         })
         .catch(err => console.log(err));
-        
-        ui.clearAllInputs();
-        getAllEmployees();
-}
 
+}
+    ui.clearAllInputs();
     e.preventDefault();
 
 }
@@ -112,19 +114,19 @@ function UpdateOrDelete(e){
     }
 }
 
-function deleteEmployee(employeeTarget){
+function deleteEmployee(employeeTarget,e){
     const id = employeeTarget.parentElement.previousElementSibling.previousElementSibling.textContent;
     request.delete(id)
     .then(
         ui.deleteEmployeeFromUI(employeeTarget.parentElement.parentElement)
-        
         )
     .catch(err => console.log(err));
-
+    e.preventDefault();
 }
 
 function updateEmployeeController(employeeTarget){
     ui.toogleUpdateButton(employeeTarget,employeeTarget.children[3].textContent);
+    console.log(employeeTarget);
     if(updateState === null){
         updateState={
             updateId: employeeTarget.children[3].textContent,
@@ -134,8 +136,6 @@ function updateEmployeeController(employeeTarget){
     else{
         updateState = null;
     }   
-
-    
 }
 
 function updateEmployee(){
@@ -162,6 +162,4 @@ function updateEmployee(){
 // request.put(1,data)
 // .then(employee => console.log(employee))
 // .catch(err => console.log(err));
-
-//request.put(1,data);
 
