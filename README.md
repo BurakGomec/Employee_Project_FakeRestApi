@@ -10,7 +10,7 @@ npm start
 ```
 
 ## What's Done In This Project
-**I used dom events(click, submit, input, DOMContentLoaded) and rest api request(get, post, delete, put) in the project.**
+**I used dom events(click, submit, input, DOMContentLoaded) and rest api request(get, post, delete, put) in the project..**
 
 
 ## Project ScreenShot :point_down:
