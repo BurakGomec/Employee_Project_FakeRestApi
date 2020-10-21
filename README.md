@@ -4,6 +4,8 @@ This is a employee project with using webpack,babel,webpack-dev-server and ES6 M
 # How To Run This Project ?
 
 ```
+npm install
+
 json-server --watch fake-api/employee.json
 
 npm start
